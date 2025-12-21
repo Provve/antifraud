@@ -1,0 +1,17 @@
+plugins {
+    id 'maven-publish'
+}
+
+publishing {
+    publications {
+        apiSpec(MavenPublication) {
+            artifactId = 'antifraud-api'
+            version = 'beta'
+            group = 'provve.tech.specs'
+            artifact source: '/src/antifraud-api.yaml'
+        }
+    }
+    repositories {
+        mavenLocal()
+    }
+}
