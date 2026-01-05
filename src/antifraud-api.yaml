@@ -39,6 +39,14 @@ components:
               - clipboard # замечено вставка решения из буфера обмена
               - web # замечено испльзование интернет-ресурсов для поиска ответов
           description: Какие запрещённые действия пользователь совершал. Если указано, значит совершал.
+    ObservationUpload:
+      type: object
+      properties:
+        observation:
+          $ref: "#/components/schemas/Observation"
+        mac:
+          type: string
+          description: "Message Authentication Code, состоящее из Observation и шифрованного хеша Observation"
   securitySchemes:
     userPassedToken:
       type: http
