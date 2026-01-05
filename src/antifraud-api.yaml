@@ -6,28 +6,12 @@ servers:
   - url: http://localhost
 
 paths:
-  /mac:
-    get:
-      summary: Получить MAC
-      responses:
-        '200':
-          description: MAC отправлен
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Mac"
-
-
-  /observation:
-    get:
-      summary: Получить результат наблюдения
-      responses:
-        '200':
-          description: Наблюдение отправлено
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Observation"
+  /session:
+    head:
+      summary: Приветственный запрос
+      description: Инициализировать процесс аутентификации и начала сессии.
+      security:
+        - userPassedToken: [ ]
 
   /echo:
     get:
@@ -38,22 +22,18 @@ paths:
 
 components:
   schemas:
-    Mac:
+    Observation:
       type: object
       properties:
-        mac:
-          type: string
-          description: MAC Антифрода для подтверждения подлинности.
-    Observation:
-      allOf:
-        - $ref: "#/components/schemas/Mac"
-        - type: object
-          properties:
-            violations:
-              type: array
-              items:
-                enum:
-                  - remote_control # к пк экзаминуемого подключались по протоколам удалённого рабочего стола
-                  - clipboard # замечено вставка решения из буфера обмена
-                  - web # замечено испльзование интернет-ресурсов для поиска ответов
-              description: Какие запрещённые действия пользователь совершал. Если указано, значит совершал.
+        violations:
+          type: array
+          items:
+            enum:
+              - remote_control # к пк экзаминуемого подключались по протоколам удалённого рабочего стола
+              - clipboard # замечено вставка решения из буфера обмена
+              - web # замечено испльзование интернет-ресурсов для поиска ответов
+          description: Какие запрещённые действия пользователь совершал. Если указано, значит совершал.
+  securitySchemes:
+    userPassedToken:
+      type: http
+      scheme: bearer
