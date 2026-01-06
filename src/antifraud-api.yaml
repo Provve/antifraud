@@ -10,12 +10,18 @@ paths:
     head:
       summary: Приветственный запрос
       description: Инициализировать процесс аутентификации и начала сессии.
+      responses:
+        '200':
+          description: ''
       security:
         - userPassedToken: [ ]
 
   /observation:
     head:
       summary: Дать команду "загрузить наблюдение".
+      responses:
+        '200':
+          description: ''
       security:
         - userPassedToken: [ ]
 
