@@ -7,7 +7,7 @@ publishing {
         apiSpec(MavenPublication) {
             artifactId = 'antifraud-api'
             group = 'tech.provve.specs'
-            version = 'beta'
+            version = '0.0.1'
             artifact source: '/src/antifraud-api.yaml'
         }
     }
