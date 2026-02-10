@@ -22,6 +22,8 @@ paths:
       responses:
         '200':
           description: ''
+        '500':
+          description: Присутствуют нарушения
       security:
         - userPassedToken: [ ]
 
