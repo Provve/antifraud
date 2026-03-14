@@ -27,34 +27,36 @@ paths:
       security:
         - userPassedToken: [ ]
 
-  /echo:
-    get:
-      summary: Проверить присутствие
-      responses:
-        '200':
-          description: Антифрод установлен
-
 components:
   schemas:
+    ObservationUpload:
+      allOf:
+        - $ref: "#/components/schemas/Observation"
+        - type: object
+          properties:
+            sig:
+              type: string
+              description: Подпись легитимности
+            checksum:
+              $ref: "#/components/schemas/Checksum"
+    Checksum:
+      type: object
+      properties:
+        checksum:
+          type: string
+          description: Контрольная сумма бинаря Антифрода
+        sig:
+          type: string
+          description: Подпись легитимности
     Observation:
       type: object
       properties:
-        violations:
-          type: array
-          items:
-            enum:
-              - remote_control # к пк экзаминуемого подключались по протоколам удалённого рабочего стола
-              - clipboard # замечено вставка решения из буфера обмена
-              - web # замечено испльзование интернет-ресурсов для поиска ответов
-          description: Какие запрещённые действия пользователь совершал. Если указано, значит совершал.
-    ObservationUpload:
-      type: object
-      properties:
-        observation:
-          $ref: "#/components/schemas/Observation"
-        mac:
+        cheated:
+          type: boolean
+          description: Мухлевал ли экзаменуемый при прохождении экзамена?
+        details:
           type: string
-          description: "Message Authentication Code, состоящее из Observation и шифрованного хеша Observation"
+          description: Указание нарушений
   securitySchemes:
     userPassedToken:
       type: http
