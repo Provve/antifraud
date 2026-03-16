@@ -7,19 +7,19 @@ servers:
 
 paths:
   /observation:
-    post:
+    get:
       summary: Начать наблюдение
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: boolean
-              description: Можно ли начинать наблюдение?
+      parameters:
+        - name: continue
+          in: path
+          required: true
+          schema:
+            type: boolean
+          description: Можно ли начинать наблюдение?
       responses:
         '200':
           description: ''
-    get:
+    head:
       summary: Дать команду "загрузить наблюдение".
       responses:
         '200':
