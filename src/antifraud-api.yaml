@@ -6,26 +6,24 @@ servers:
   - url: http://localhost
 
 paths:
-  /session:
-    head:
-      summary: Приветственный запрос
-      description: Инициализировать процесс аутентификации и начала сессии.
+  /observation:
+    post:
+      summary: Начать наблюдение
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: boolean
+              description: Можно ли начинать наблюдение?
       responses:
         '200':
           description: ''
-      security:
-        - userPassedToken: [ ]
-
-  /observation:
-    head:
+    get:
       summary: Дать команду "загрузить наблюдение".
       responses:
         '200':
           description: ''
-        '500':
-          description: Присутствуют нарушения
-      security:
-        - userPassedToken: [ ]
 
 components:
   schemas:
@@ -57,7 +55,3 @@ components:
         details:
           type: string
           description: Указание нарушений
-  securitySchemes:
-    userPassedToken:
-      type: http
-      scheme: bearer
