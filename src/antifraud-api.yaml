@@ -33,19 +33,10 @@ components:
         - type: object
           properties:
             sig:
-              type: string
-              description: Подпись легитимности
-            checksum:
-              $ref: "#/components/schemas/Checksum"
-    Checksum:
-      type: object
-      properties:
-        checksum:
-          type: string
-          description: Контрольная сумма бинаря Антифрода
-        sig:
-          type: string
-          description: Подпись легитимности
+              $ref: "#/components/schemas/Signature"
+    Signature:
+      type: string
+      description: Подпись легитимности
     Observation:
       type: object
       properties:
