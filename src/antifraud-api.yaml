@@ -34,14 +34,14 @@ paths:
 components:
   schemas:
     ObservationUpload:
-      allOf:
-        - $ref: "#/components/schemas/Observation"
-        - type: object
-          properties:
-            nonce:
-              type: string
-            sig:
-              $ref: "#/components/schemas/Signature"
+      type: object
+      properties:
+        observation:
+          $ref: "#/components/schemas/Observation"
+        nonce:
+          type: string
+        sig:
+          $ref: "#/components/schemas/Signature"
     Signature:
       type: string
       description: Подпись легитимности, формат Base64
