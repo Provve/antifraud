@@ -10,12 +10,6 @@ paths:
     get:
       summary: Начать наблюдение
       parameters:
-        - name: continue
-          in: path
-          required: true
-          schema:
-            type: boolean
-          description: Можно ли начинать наблюдение?
         - name: nonce
           in: path
           required: true
