@@ -36,7 +36,7 @@ components:
               $ref: "#/components/schemas/Signature"
     Signature:
       type: string
-      description: Подпись легитимности
+      description: Подпись легитимности, формат Base64
     Observation:
       type: object
       properties:
