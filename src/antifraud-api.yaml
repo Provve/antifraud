@@ -27,7 +27,7 @@ paths:
 
 components:
   schemas:
-    ObservationUpload:
+    ObservationUpload.request:
       type: object
       properties:
         observation:
@@ -48,3 +48,11 @@ components:
         details:
           type: string
           description: Указание нарушений
+    ObservationUpload.response:
+      type: object
+      properties:
+        upload_redirect:
+          type: string
+          description: Ссылка на страницу загрузки решения
+        trust_token:
+          type: string
