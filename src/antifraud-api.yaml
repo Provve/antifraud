@@ -38,7 +38,7 @@ components:
           $ref: "#/components/schemas/Signature"
     Signature:
       type: string
-      description: Подпись легитимности (Base64). Формируется из Observation + nonce
+      description: Подпись легитимности (Base64). Формируется по схеме nonce || Observation
     Observation:
       type: object
       properties:
