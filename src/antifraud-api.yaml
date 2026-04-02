@@ -51,8 +51,5 @@ components:
     ObservationUpload.response:
       type: object
       properties:
-        upload_redirect:
-          type: string
-          description: Ссылка на страницу загрузки решения
         trust_token:
           type: string
