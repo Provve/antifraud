@@ -48,7 +48,7 @@ components:
         cheated:
           type: boolean
           description: Мухлевал ли экзаменуемый при прохождении экзамена?
-        details:
+        violations:
           type: string
           description: Указание нарушений
     ObservationUpload.response:
