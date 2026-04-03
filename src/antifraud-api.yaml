@@ -36,21 +36,29 @@ components:
           type: string
         sig:
           $ref: "#/components/schemas/Signature"
+        auth_token:
+          type: string
+          description: Переданный браузером токен пользователя
+      required:
+        - observation
+        - nonce
+        - sig
+        - auth_token
     Signature:
       type: string
       description: Подпись легитимности (Base64). Формируется по схеме nonce || Observation
     Observation:
       type: object
       properties:
-        examinee:
-          type: string
-          description: Логин экзаменуемого
         cheated:
           type: boolean
           description: Мухлевал ли экзаменуемый при прохождении экзамена?
         violations:
           type: string
           description: Указание нарушений
+      required:
+        - cheated
+        - violations
     ObservationUpload.response:
       type: object
       properties:
