@@ -42,6 +42,9 @@ components:
     Observation:
       type: object
       properties:
+        examinee:
+          type: string
+          description: Логин экзаменуемого
         cheated:
           type: boolean
           description: Мухлевал ли экзаменуемый при прохождении экзамена?
